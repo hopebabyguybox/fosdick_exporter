@@ -26,7 +26,7 @@ Since this script requires custom python modules that lambda doesn't support dir
 
 Inside the repo we need to prepare the custom modules:
 <pre>
-    pip install -r requirements.txt -t .
+    pip install -r requirements.txt -t $(pwd)
 </pre>
 
 Zip up this directory:
