@@ -4,7 +4,6 @@ This provides API code to interact with tradegecko.
 ## Export file format
 This script will provide a file in the following export format which was provided by fosdick:
 
-For each order start the export of the tab seperated file in a for loop
 |Field	|Description			|Size (max. # of char.)		|Type (N=Number, A=Text)	|Required	|Picture/Notes							|
 |-------|-------------------------------|-------------------------------|-------------------------------|---------------|---------------------------------------------------------------|
 |1	|Order Number			|25				|A				|Yes		|							   	|	
