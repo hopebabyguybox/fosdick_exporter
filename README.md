@@ -1,7 +1,26 @@
 # fosdick_exporter
 This provides API code to interact with tradegecko.
 
-## Export file format
+## Requirements
+In order to execute this python script the following python modules must be installed:
+
+ tradegecko-python
+
+Python version >2.6 must also be present.
+
+## Usage
+In order to run the script you must set the following environment variables:
+
+ TRADEGECKO_ACCESS_TOKEN = this API token should be provided by the tradegecko api once you create an APP
+
+ONCE WE FIGURE OUT THE AMAZON PORTION NEED TO ADD MORE INFORMATION HERE
+
+## Export File
+This script will produce an export file that will be stored in Amazon S3 for easy future retrieval, this file will also be sent via SFTP to fosdick for processing.
+
+ONCE WE FIGURE OUT THE AMAZON PORTION NEED TO ADD MORE INFORMATION HERE
+ 
+### Export file format
 This script will provide a file in the following export format which was provided by fosdick:
 
 |Field	|Description			|Size (max. # of char.)		|Type (N=Number, A=Text)	|Required	|Picture/Notes							|
