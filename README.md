@@ -20,20 +20,24 @@ In order to run the script you must set the following things up:
 
 ### Lambda Environment
 Since this script requires custom python modules that lambda doesn't support direct we need to upload this script via a zip file. In order to do this first you must clone the repo to some system that has at least python pip installed:
+<pre>
     git clone https://github.com/hopebabyguybox/fosdick_exporter.git
+</pre>
 
 Inside the repo we need to prepare the custom modules:
+<pre>
     pip install -r requirements.txt -t .
+</pre>
 
 Zip up this directory:
+<pre>
     zip -r ../fosdick_exporter.zip * -x ".git"
+</pre>
 
 Then use the Lambda console interface to upload this zip file to get the latest code.
 
 ### AWS API Gateway
-This service would allow the Lambda script to be run via a simple URL call the link below is an example of how to configure it:
-
-    http://www.giantflyingsaucer.com/blog/?p=5730
+This service would allow the Lambda script to be run via a simple URL call the link below is an example of how to configure it: http://www.giantflyingsaucer.com/blog/?p=5730
 
 ## Export File
 This script will produce an export file that will be stored in Amazon S3 for easy future retrieval, this file will also be sent via SFTP to fosdick for processing. As a log file we also upload each file to the s3 bucket fosdick-exporter to ensure we could go back in time to see what we have transmitted to them.
