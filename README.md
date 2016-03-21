@@ -4,14 +4,14 @@ This provides API code to interact with tradegecko.
 ## Requirements
 In order to execute this python script the following python modules must be installed:
 
- tradegecko-python
+    tradegecko-python
 
 Python version >2.6 must also be present.
 
 ## Usage
 In order to run the script you must set the following environment variables:
 
- TRADEGECKO_ACCESS_TOKEN = this API token should be provided by the tradegecko api once you create an APP
+    TRADEGECKO_ACCESS_TOKEN = this API token should be provided by the tradegecko api once you create an APP
 
 ONCE WE FIGURE OUT THE AMAZON PORTION NEED TO ADD MORE INFORMATION HERE
 
