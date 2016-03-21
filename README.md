@@ -4,21 +4,39 @@ This provides API code to interact with tradegecko.
 ## Requirements
 In order to execute this python script the following python modules must be installed:
 
+    boto3
     tradegecko-python
+    wsgiref
 
-Python version >2.6 must also be present.
+Python version >=2.7 must also be present.
 
 ## Usage
-In order to run the script you must set the following environment variables:
+In order to run the script you must set the following things up:
 
-    TRADEGECKO_ACCESS_TOKEN = this API token should be provided by the tradegecko api once you create an APP
+    - Create an s3 bucket named fosdick-exports
+    - Create a file called .tg under this bucket with the access token for tradegecko
+    - A role must exist that allows AWS lambda to access this bucket
+    - Create an AWS Lambda function to run this python code (see below for specifics)
 
-ONCE WE FIGURE OUT THE AMAZON PORTION NEED TO ADD MORE INFORMATION HERE
+### Lambda Environment
+Since this script requires custom python modules that lambda doesn't support direct we need to upload this script via a zip file. In order to do this first you must clone the repo to some system that has at least python pip installed:
+    git clone https://github.com/hopebabyguybox/fosdick_exporter.git
+
+Inside the repo we need to prepare the custom modules:
+    pip install -r requirements.txt -t .
+
+Zip up this directory:
+    zip -r ../fosdick_exporter.zip * -x ".git"
+
+Then use the Lambda console interface to upload this zip file to get the latest code.
+
+### AWS API Gateway
+This service would allow the Lambda script to be run via a simple URL call the link below is an example of how to configure it:
+
+    http://www.giantflyingsaucer.com/blog/?p=5730
 
 ## Export File
-This script will produce an export file that will be stored in Amazon S3 for easy future retrieval, this file will also be sent via SFTP to fosdick for processing.
-
-ONCE WE FIGURE OUT THE AMAZON PORTION NEED TO ADD MORE INFORMATION HERE
+This script will produce an export file that will be stored in Amazon S3 for easy future retrieval, this file will also be sent via SFTP to fosdick for processing. As a log file we also upload each file to the s3 bucket fosdick-exporter to ensure we could go back in time to see what we have transmitted to them.
  
 ### Export file format
 This script will provide a file in the following export format which was provided by fosdick:
