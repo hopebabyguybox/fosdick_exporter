@@ -1,1 +1,13 @@
 .DS_Store
+boto3*
+botocore*
+concurrent*
+dateutil*
+docutils*
+futures*
+jmespath*
+python_dateutil*
+requests*
+six*
+tradegecko*
+wsgiref*

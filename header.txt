@@ -61,7 +61,7 @@ var __st={"a":10178551,"offset":-18000,"reqid":"1078662c-c22a-4de2-a6db-c6099d6f
       <div class="wrapper">
     <header class="site-header" role="banner">
               <h1 class="site-header__logo" itemscope itemtype="http://schema.org/Organization">
-                <a href="/" itemprop="url" class="site-header__logo-link">
+                <a href="http://babyguybox.com" itemprop="url" class="site-header__logo-link">
                   <img src="https://cdn.shopify.com/s/files/1/1017/8551/t/3/assets/logo.png?12859123098174754049" alt="#babyguybox" itemprop="logo">
                 </a>
               </h1><nav class="nav-bar" role="navigation">
