@@ -3,6 +3,7 @@
 import datetime
 import json
 import boto3
+import sys
 from tradegecko import TradeGeckoRestClient
 
 # Use s3 bucket to get access token for the API and prepare output documents
@@ -93,6 +94,17 @@ with open(outfile, 'w') as f:
    trailerLine = "Trailer Record\t" + str(outfilename) + "\t" + str(today) + "\t" + str(time) + "\t" + str(totalOrders) + "\t" + "00001\n" 
    f.write(trailerLine)
 
+htmlBody= "<body><p><center>Log file created at s3://" + myBucket + "/" + outfilename + "<p></body>"
+
 def lambda_handler(event, context):
-   s3c.upload_file(outfile, myBucket, outfilename)
-   return "File successfully created s3://" + myBucket + "/" + outfilename + "."
+   try:
+      s3c.upload_file(outfile, myBucket, outfilename)
+   except:
+      htmlBody = "<body><p><center>The file was not properly uploaded to fosdick.<p></body>"
+      return htmlHeader + htmlBody + htmlFooter
+
+   header = s3.Object(myBucket,'header.html')
+   footer = s3.Object(myBucket,'footer.html')
+   htmlHeader = header.get()["Body"].read().decode("utf-8")
+   htmlFooter = footer.get()["Body"].read().decode("utf-8")
+   return htmlHeader + htmlBody + htmlFooter
